@@ -18,20 +18,20 @@ class cuenta {
     constructor(titular){
         this.titular = titular;
         this.saldo = 0;
-    };
+    }
 
     ingresar(deposito){
         
         document.write(`<p>Ingresaste $${deposito}</p>`);
 
         this.saldo = this.saldo + deposito;
-    };
+    }
 
     extraer(retiro){
         
         document.write(`<p>Retiraste $${retiro}</p>`);
         this.saldo = this.saldo - retiro;
-    };
+    }
 
     informar(){
         document.write(`<p>${this.titular} tu saldo es: $${this.saldo}</p>`);
