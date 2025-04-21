@@ -14,7 +14,7 @@ Rectángulos
 
 */
 
-class cuenta {
+class Cuenta {
     constructor(titular){
         this.titular = titular;
         this.saldo = 0;
@@ -38,7 +38,7 @@ class cuenta {
     }
 };
 
-const cuenta001 = new cuenta("Alex");
+const cuenta001 = new Cuenta("Alex");
 
 document.write(`<p>TITULAR: ${cuenta001.titular}</p>`);
 document.write(`<p>SALDO: $${cuenta001.saldo}</p>`);

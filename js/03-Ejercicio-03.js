@@ -6,7 +6,7 @@ mostrar sus propiedades, calcular el perímetro y el área
 
 */
 
-class rectangulos {
+class Rectangulos {
     constructor(alto, ancho){
         this.alto = alto;
         this.ancho = ancho;
@@ -39,7 +39,7 @@ class rectangulos {
     };
 };
 
-const rectangulo001 = new rectangulos(2, 4);
+const rectangulo001 = new Rectangulos(2, 4);
 
 console.log(rectangulo001);
 rectangulo001.mostrar();
