@@ -17,12 +17,16 @@ let auto = {
     estado: "Apagado",
     encenderAuto(){
         document.write(`<p>El auto se encedió.</p>`);
+        this.estado = "Encendido";
     },
     apagarAuto(){
         document.write(`<p>El auto se apagó.</p>`);
+        this.estado = "Apagado";
     }
 };
 
 console.log(auto);
 auto.encenderAuto();
+document.write(`<p>El estado del auto es: ${auto.estado}</p>`);
 auto.apagarAuto();
+document.write(`<p>El estado del auto es: ${auto.estado}</p>`);
