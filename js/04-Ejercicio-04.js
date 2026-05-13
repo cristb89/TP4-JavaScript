@@ -29,9 +29,8 @@ const jabon = new Producto(32, "Jabon Lux (x3)", 3000);
 const fideo = new Producto(7,"Fideo Entrefino Cotella (500g)", 900);
 const gaseosa = new Producto(15, "Coca-Cola (3L)", 3500);
 
-console.log(jabon);
-jabon.imprimirDatos();
-console.log(fideo);
-fideo.imprimirDatos();
-console.log(gaseosa);
-gaseosa.imprimirDatos();
+let productos = [jabon, fideo, gaseosa];
+
+for (let i = 0; i < productos.length; i++) {
+    productos[i].imprimirDatos();
+}
