@@ -6,7 +6,7 @@
 -Los métodos de la agenda serán los siguientes:
 -aniadirContacto(Contacto): Añade un contacto a la agenda, sino la agenda no puede almacenar más contactos indicar por pantalla.
 -existeContacto(Contacto): indica si el contacto pasado existe o no.
--listarContactos(): Lista toda la agenda
+-listarContactos(): Listar toda la agenda.
 -buscarContacto(nombre): busca un contacto por su nombre y muestra su teléfono.
 -eliminarContacto(Contacto c): elimina el contacto de la agenda, indica si se ha eliminado o no por pantalla
 -agendaLlena(): indica si la agenda está llena.
@@ -75,7 +75,7 @@ class Agenda extends Contacto { // Prototipo de una Agenda
         }
     }
 
-    existeContacto(nombre) {
+    existeContacto(nombre) { // Indica si el contacto pasado existe o no.
         if (this.contactos.some((existeNombre) => existeNombre.nombre.toLowerCase() === nombre.toLowerCase()) === true){
             alert(`El contacto ${nombre} SI existe en la agenda`);
         } else {
@@ -83,14 +83,20 @@ class Agenda extends Contacto { // Prototipo de una Agenda
         }
     }
 
-    listarContactos() {
+    listarContactos() { // Listar toda la agenda.
         agenda.contactos.forEach(contacto => {
             document.write(`<p>${agenda.contactos.indexOf(contacto) + 1}- Nombre: ${contacto.nombre}<br>Teléfono: ${contacto.telefono}</p><hr>`); // El método indexOf() de los arrays se utiliza para encontrar la posición (índice) de un elemento dentro de un arreglo.
         });
     }
 
-    buscarContacto(nombre) {
+    buscarContacto(nombre) { // Busca un contacto por su nombre y muestra su teléfono.
+        const contactoEncontrado = this.contactos.find((contacto) => contacto.nombre.toLowerCase() === nombre.toLowerCase());
 
+        if (contactoEncontrado) {
+            document.write(`<p>Nombre: ${contactoEncontrado.nombre}<br>Teléfono: ${contactoEncontrado.telefono}</p>`);
+        } else {
+            alert(`El contacto ${nombre} no se encuentra en la agenda.`);
+        }
     }
 
     eliminarContacto(Contacto) {
