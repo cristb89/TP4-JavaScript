@@ -75,8 +75,12 @@ class Agenda extends Contacto { // Prototipo de una Agenda
         }
     }
 
-    existeContacto(Contacto) {
-
+    existeContacto(nombre) {
+        if (this.contactos.some((existeNombre) => existeNombre.nombre.toLowerCase() === nombre.toLowerCase()) === true){
+            alert(`El contacto ${nombre} SI existe en la agenda`);
+        } else {
+            alert(`El contacto ${nombre} NO existe en la agenda`);
+        }
     }
 
     listarContactos() {
