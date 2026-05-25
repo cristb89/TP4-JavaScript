@@ -99,16 +99,28 @@ class Agenda extends Contacto { // Prototipo de una Agenda
         }
     }
 
-    eliminarContacto(Contacto) {
+    eliminarContacto(nombre) { // Elimina el contacto de la agenda, indica si se ha eliminado o no por pantalla.
+        const indiceContacto = this.contactos.findIndex((contacto) => contacto.nombre.toLowerCase() === nombre.toLowerCase());
 
+        if (indiceContacto !== -1) {
+            this.contactos.splice(indiceContacto, 1);
+            alert(`El contacto ${nombre} ha sido eliminado de la agenda.`);
+        } else {
+            alert(`El contacto ${nombre} no se encuentra en la agenda.`);
+        }
     }
 
-    agendaLlena() {
-
+    agendaLlena() { // Indica si la agenda está llena.
+        if (this.contactos.length >= this.tamanio) {
+            alert("La agenda está llena.");
+        } else {
+            alert("La agenda no está llena.");
+        }
     }
 
-    huecosLibres() {
-
+    huecosLibres() { // Indica cuántos contactos más podemos ingresar.
+        const huecosDisponibles = this.tamanio - this.contactos.length;
+        alert(`Puedes ingresar ${huecosDisponibles} contactos más en la agenda.`);
     }
 }
 
