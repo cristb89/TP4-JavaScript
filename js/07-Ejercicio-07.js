@@ -85,7 +85,7 @@ class Agenda extends Contacto { // Prototipo de una Agenda
 
     listarContactos() { // Listar toda la agenda.
         agenda.contactos.forEach(contacto => {
-            document.write(`<p>${agenda.contactos.indexOf(contacto) + 1}- Nombre: ${contacto.nombre}<br>Teléfono: ${contacto.telefono}</p><hr>`); // El método indexOf() de los arrays se utiliza para encontrar la posición (índice) de un elemento dentro de un arreglo.
+            alert(`Contacto Nº ${agenda.contactos.indexOf(contacto) + 1}: \n - Nombre: ${contacto.nombre} \n - Teléfono: ${contacto.telefono}`); // El método indexOf() de los arrays se utiliza para encontrar la posición (índice) de un elemento dentro de un arreglo.
         });
     }
 
@@ -93,7 +93,7 @@ class Agenda extends Contacto { // Prototipo de una Agenda
         const contactoEncontrado = this.contactos.find((contacto) => contacto.nombre.toLowerCase() === nombre.toLowerCase());
 
         if (contactoEncontrado) {
-            document.write(`<p>Nombre: ${contactoEncontrado.nombre}<br>Teléfono: ${contactoEncontrado.telefono}</p>`);
+            alert(`Contacto encontrado: \n - Nombre: ${contactoEncontrado.nombre} \n - Teléfono: ${contactoEncontrado.telefono}`);
         } else {
             alert(`El contacto ${nombre} no se encuentra en la agenda.`);
         }
@@ -124,28 +124,67 @@ class Agenda extends Contacto { // Prototipo de una Agenda
     }
 }
 
-const contacto1 = new Contacto("Cristian", "3816283595");
-const contacto2 = new Contacto("Mi Amor", "3816283595");
-const contacto3 = new Contacto("Nico", "3816283595");
-const contacto4 = new Contacto("Sol", "3816283595");
-const contacto5 = new Contacto("Mama", "3816283595");
-const contacto6 = new Contacto("Papa", "3816283595");
-const contacto7 = new Contacto("Gabi", "3816283595");
-const contacto8 = new Contacto("Guti", "3816283595");
-const contacto9 = new Contacto("Rosi", "3816283595");
-const contacto10 = new Contacto("Nahuel", "3816283595");
-
-
-
 const agenda = new Agenda();
-agenda.aniadirContacto(contacto1);
-agenda.aniadirContacto(contacto2);
-agenda.aniadirContacto(contacto3);
-agenda.aniadirContacto(contacto4);
-agenda.aniadirContacto(contacto5);
-agenda.aniadirContacto(contacto6);
-agenda.aniadirContacto(contacto7);
-agenda.aniadirContacto(contacto8);
-agenda.aniadirContacto(contacto9);
-agenda.aniadirContacto(contacto10);
-agenda.listarContactos();
+
+do {
+    
+    let opcionUsuario = parseInt(prompt(`Selecciona una opción:\n1- Añadir contacto\n2- Buscar contacto\n3- Eliminar contacto\n4- Lista de contactos\n5- Comprobar estado de la agenda\n6- Comprobar espacio disponible en la agenda`));
+
+    if (isNaN(opcionUsuario) || (opcionUsuario === "")) {
+        alert("Por favor, ingrese una opción válida.");
+        continue;
+    } else {
+        switch (opcionUsuario) {
+            case 1:
+                const nombreContacto = prompt("Ingrese el nombre del contacto:");
+                const telefonoContacto = prompt("Ingrese el teléfono del contacto:");
+                const nuevoContacto = new Contacto(nombreContacto, telefonoContacto);
+                agenda.aniadirContacto(nuevoContacto);
+            break;
+            case 2:
+                const nombreBusqueda = prompt("Ingrese el nombre del contacto que desea buscar:");
+                agenda.buscarContacto(nombreBusqueda);
+            break;
+            case 3:
+                const nombreEliminacion = prompt("Ingrese el nombre del contacto que desea eliminar:");
+                agenda.eliminarContacto(nombreEliminacion);
+            break;
+            case 4:
+                agenda.listarContactos();
+            break;
+            case 5:
+                agenda.agendaLlena();
+            break;
+            case 6:
+                agenda.huecosLibres();
+            break;
+            default:
+            alert("Por favor, ingrese una opción válida.");
+        }
+    }
+    
+    console.log(`Opción seleccionada por el usuario: ${opcionUsuario}`);
+
+} while (confirm("¿Desea realizar otra operación?"));
+
+// const contacto1 = new Contacto("Cristian", "3816283595");
+// const contacto2 = new Contacto("Mi Amor", "3816283595");
+// const contacto3 = new Contacto("Nico", "3816283595");
+// const contacto4 = new Contacto("Sol", "3816283595");
+// const contacto5 = new Contacto("Mama", "3816283595");
+// const contacto6 = new Contacto("Papa", "3816283595");
+// const contacto7 = new Contacto("Gabi", "3816283595");
+// const contacto8 = new Contacto("Guti", "3816283595");
+// const contacto9 = new Contacto("Rosi", "3816283595");
+// const contacto10 = new Contacto("Nahuel", "3816283595");
+
+// agenda.aniadirContacto(contacto1);
+// agenda.aniadirContacto(contacto2);
+// agenda.aniadirContacto(contacto3);
+// agenda.aniadirContacto(contacto4);
+// agenda.aniadirContacto(contacto5);
+// agenda.aniadirContacto(contacto6);
+// agenda.aniadirContacto(contacto7);
+// agenda.aniadirContacto(contacto8);
+// agenda.aniadirContacto(contacto9);
+// agenda.aniadirContacto(contacto10);
